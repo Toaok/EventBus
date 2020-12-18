@@ -111,8 +111,8 @@ public class EventBus {
 
     EventBus(EventBusBuilder builder) {
         logger = builder.getLogger();
-        subscriptionsByEventType = new HashMap<>();
-        typesBySubscriber = new HashMap<>();
+        subscriptionsByEventType = new WeakHashMap<>();
+        typesBySubscriber = new WeakHashMap<>();
         stickyEvents = new ConcurrentHashMap<>();
         mainThreadSupport = builder.getMainThreadSupport();
         mainThreadPoster = mainThreadSupport != null ? mainThreadSupport.createPoster(this) : null;
